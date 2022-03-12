@@ -7,8 +7,14 @@
 package mx.gob.oadprs.antecentepenal.services;
 
 import java.util.List;
-import mx.gob.oadprs.antecentepenal.model.catalog.Estado;
-import mx.gob.oadprs.antecentepenal.model.catalog.Sexo;
+import mx.gob.oadprs.antecentepenal.model.catalogos.Estados;
+import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusResolucion;
+import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusSolicitud;
+import mx.gob.oadprs.antecentepenal.model.catalogos.Incidencias;
+import mx.gob.oadprs.antecentepenal.model.catalogos.InstitucionesCertificadas;
+import mx.gob.oadprs.antecentepenal.model.catalogos.ParametrosDoc;
+import mx.gob.oadprs.antecentepenal.model.catalogos.RazonSolicitud;
+import mx.gob.oadprs.antecentepenal.model.catalogos.TipoResolucion;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -23,13 +29,119 @@ public interface CatalogosService {
 	 * @author
 	 * @return
 	 */
-	List<Estado> estadosList();
+	List<Estados> estadosList();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	Estados obtieneEstado(int id);
 
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
 	 * @return
 	 */
-	List<Sexo> sexoList();
+	List<EstatusResolucion> obtieneListaEstatusResolucion();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	EstatusResolucion obtieneEstatusResolucion(int id);
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @return
+	 */
+	List<EstatusSolicitud> obtieneListaEstatusSolicitud();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	EstatusSolicitud obtieneEstatusSolicitud(int id);
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @return
+	 */
+	List<Incidencias> obtieneListaIncidencias();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	Incidencias obtieneIncidencia(int id);
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @return
+	 */
+	List<InstitucionesCertificadas> obtieneListaInstitucionesCertificadas();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	InstitucionesCertificadas obtieneInstitucionCertificada(int id);
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @return
+	 */
+	List<ParametrosDoc> obtieneListaParametrosDoc();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	ParametrosDoc obtieneParametroDoc(int id);
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @return
+	 */
+	List<RazonSolicitud> obtieneListaRazonSolicitud();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	RazonSolicitud obtieneRazonSolicitud(int id);
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @return
+	 */
+	List<TipoResolucion> obtieneListaTipoResolucion();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	TipoResolucion obtieneTipoResolucion(int id);
 
 }

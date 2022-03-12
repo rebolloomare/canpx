@@ -1,5 +1,5 @@
 /**
- * CatalogosRepository.java Fecha de creación: 22 feb. 2022, 18:43:26 Copyright (c) 2022
+ * SolicitudRepository.java Fecha de creación: 7 mar. 2022, 23:28:37 Copyright (c) 2022
  * XXXXXXX Todos los derechos reservados. Este software es información confidencial,
  * propiedad de XXXXXXX. Esta información confidencial no deberá ser divulgada y solo se
  * podrá utilizar de acuerdo a los términos que determine la propia empresa.
@@ -7,8 +7,7 @@
 package mx.gob.oadprs.antecentepenal.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import mx.gob.oadprs.antecentepenal.model.catalog.Estado;
+import mx.gob.oadprs.antecentepenal.model.Solicitud;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -16,7 +15,6 @@ import mx.gob.oadprs.antecentepenal.model.catalog.Estado;
  * @version 1.0
  * @since
  */
-@Repository
-public interface EstadoRepository extends JpaRepository<Estado, Integer> {
+public interface SolicitudRepository extends JpaRepository<Solicitud, Integer> {
 
 }
