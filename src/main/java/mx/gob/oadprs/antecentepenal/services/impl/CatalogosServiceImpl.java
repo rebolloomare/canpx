@@ -7,15 +7,13 @@
 package mx.gob.oadprs.antecentepenal.services.impl;
 
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import mx.gob.oadprs.antecentepenal.controllers.CatalogosController;
 import mx.gob.oadprs.antecentepenal.model.catalogos.Estados;
 import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusResolucion;
 import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusSolicitud;
 import mx.gob.oadprs.antecentepenal.model.catalogos.Incidencias;
+import mx.gob.oadprs.antecentepenal.model.catalogos.Inciso;
 import mx.gob.oadprs.antecentepenal.model.catalogos.InstitucionesCertificadas;
 import mx.gob.oadprs.antecentepenal.model.catalogos.ParametrosDoc;
 import mx.gob.oadprs.antecentepenal.model.catalogos.RazonSolicitud;
@@ -24,6 +22,7 @@ import mx.gob.oadprs.antecentepenal.repositories.catalogos.EstadoRepository;
 import mx.gob.oadprs.antecentepenal.repositories.catalogos.EstatusResolucionRepository;
 import mx.gob.oadprs.antecentepenal.repositories.catalogos.EstatusSolicitudRepository;
 import mx.gob.oadprs.antecentepenal.repositories.catalogos.IncidenciasRepository;
+import mx.gob.oadprs.antecentepenal.repositories.catalogos.IncisoRepository;
 import mx.gob.oadprs.antecentepenal.repositories.catalogos.InstitucionesCertificadasRepository;
 import mx.gob.oadprs.antecentepenal.repositories.catalogos.ParametrosDocRepository;
 import mx.gob.oadprs.antecentepenal.repositories.catalogos.RazonSolicitudRepository;
@@ -39,8 +38,6 @@ import mx.gob.oadprs.antecentepenal.services.CatalogosService;
 @Service
 public class CatalogosServiceImpl implements CatalogosService {
 
-	private static final Logger logger = LoggerFactory.getLogger(CatalogosController.class);
-
 	@Autowired
 	private EstadoRepository estadoRepository;
 
@@ -52,6 +49,9 @@ public class CatalogosServiceImpl implements CatalogosService {
 
 	@Autowired
 	private IncidenciasRepository incidenciasRepository;
+
+	@Autowired
+	private IncisoRepository incisoRepository;
 
 	@Autowired
 	private InstitucionesCertificadasRepository institucionesCertificadasRepository;
@@ -72,7 +72,6 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 */
 	@Override
 	public List<Estados> estadosList() {
-		logger.info("CatalogosServiceImpl:::::estadosList");
 		return estadoRepository.findAll();
 	}
 
@@ -151,6 +150,26 @@ public class CatalogosServiceImpl implements CatalogosService {
 	@Override
 	public Incidencias obtieneIncidencia(int id) {
 		return incidenciasRepository.getById(id);
+	}
+
+	/*
+	 * La documentación de este método se encuentra en la clase o interface que lo declara
+	 * (non-Javadoc)
+	 * @see mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneListaIncisos()
+	 */
+	@Override
+	public List<Inciso> obtieneListaIncisos() {
+		return incisoRepository.findAll();
+	}
+
+	/*
+	 * La documentación de este método se encuentra en la clase o interface que lo declara
+	 * (non-Javadoc)
+	 * @see mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneInciso(int)
+	 */
+	@Override
+	public Inciso obtieneInciso(int id) {
+		return incisoRepository.getById(id);
 	}
 
 	/*

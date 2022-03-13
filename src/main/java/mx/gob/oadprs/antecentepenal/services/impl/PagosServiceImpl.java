@@ -72,30 +72,4 @@ public class PagosServiceImpl implements PagoService {
 		return listaPagos;
 	}
 
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see
-	 * mx.gob.oadprs.antecentepenal.services.PagoService#eliminaPagoById(java.lang.String)
-	 */
-	@Override
-	public String eliminaPagoById(String folio) {
-		logger.info("folio a eliminar: " + folio);
-		pagosRepository.deleteById(Integer.parseInt(folio));
-		return folio;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see mx.gob.oadprs.antecentepenal.services.PagoService#actualizaPago(mx.gob.oadprs.
-	 * antecentepenal.model.Pago)
-	 */
-	@Override
-	public Pagos actualizaPago(Pagos pago) {
-		Pagos pagoExistente = pagosRepository.findById(pago.getFolio()).orElse(null);
-		pagoExistente.setFolio(pago.getFolio());
-		return pagosRepository.save(pagoExistente);
-	}
-
 }

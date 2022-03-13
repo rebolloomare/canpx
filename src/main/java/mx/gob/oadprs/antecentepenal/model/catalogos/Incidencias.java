@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.dtos.IncidenciasDto;
 
 /**
@@ -18,6 +19,7 @@ import mx.gob.oadprs.antecentepenal.dtos.IncidenciasDto;
  * @version 1.0
  * @since
  */
+@Data
 @Entity
 @Table(schema = "cat", name = "cat_incidencias")
 public class Incidencias {
@@ -32,26 +34,6 @@ public class Incidencias {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
-	 */
-	public Incidencias() {
-		super();
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param idIncidencia
-	 * @param incidencia
-	 */
-	public Incidencias(int idIncidencia, String incidencia) {
-		super();
-		this.idIncidencia = idIncidencia;
-		this.incidencia = incidencia;
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
 	 * @param idIncidencia
 	 * @param idincidencia2
 	 */
@@ -59,50 +41,6 @@ public class Incidencias {
 		super();
 		this.idIncidencia = incidenciasDto.getIdIncidencia();
 		this.incidencia = incidenciasDto.getIncidencia();
-	}
-
-	/**
-	 * @return el atributo idIncidencia
-	 */
-	public int getIdIncidencia() {
-		return idIncidencia;
-	}
-
-	/**
-	 * @param idIncidencia parametro idIncidencia a actualizar
-	 */
-	public void setIdIncidencia(int idIncidencia) {
-		this.idIncidencia = idIncidencia;
-	}
-
-	/**
-	 * @return el atributo idincidencia
-	 */
-	public String getIncidencia() {
-		return incidencia;
-	}
-
-	/**
-	 * @param idincidencia parametro idincidencia a actualizar
-	 */
-	public void setIncidencia(String incidencia) {
-		this.incidencia = incidencia;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Incidencias [idIncidencia=")
-			.append(idIncidencia)
-			.append(", incidencia=")
-			.append(incidencia)
-			.append("]");
-		return builder.toString();
 	}
 
 }

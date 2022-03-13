@@ -11,6 +11,7 @@ import mx.gob.oadprs.antecentepenal.model.catalogos.Estados;
 import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusResolucion;
 import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusSolicitud;
 import mx.gob.oadprs.antecentepenal.model.catalogos.Incidencias;
+import mx.gob.oadprs.antecentepenal.model.catalogos.Inciso;
 import mx.gob.oadprs.antecentepenal.model.catalogos.InstitucionesCertificadas;
 import mx.gob.oadprs.antecentepenal.model.catalogos.ParametrosDoc;
 import mx.gob.oadprs.antecentepenal.model.catalogos.RazonSolicitud;
@@ -83,6 +84,21 @@ public interface CatalogosService {
 	 * @return
 	 */
 	Incidencias obtieneIncidencia(int id);
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @return
+	 */
+	List<Inciso> obtieneListaIncisos();
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	Inciso obtieneInciso(int id);
 
 	/**
 	 * TODO [Agregar documentacion al método]

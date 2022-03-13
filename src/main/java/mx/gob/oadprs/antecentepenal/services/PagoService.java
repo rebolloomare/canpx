@@ -41,20 +41,4 @@ public interface PagoService {
 	 */
 	List<Pagos> obtienePagos();
 
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param folio
-	 * @return
-	 */
-	String eliminaPagoById(String folio);
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param pago
-	 * @return
-	 */
-	Pagos actualizaPago(Pagos pago);
-
 }

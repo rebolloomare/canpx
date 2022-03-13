@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.dtos.EstadosDto;
 
 /**
@@ -20,6 +21,7 @@ import mx.gob.oadprs.antecentepenal.dtos.EstadosDto;
  * @version 1.0
  * @since
  */
+@Data
 @Entity
 @Table(schema = "cat", name = "cat_estados")
 public class Estados {
@@ -41,30 +43,6 @@ public class Estados {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
-	 */
-	public Estados() {
-		super();
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param id
-	 * @param estado
-	 * @param nombreEstado
-	 * @param codigoAlpha2
-	 */
-	public Estados(int id, String estado, String nombreEstado, String codigoAlpha2) {
-		super();
-		this.id = id;
-		this.estado = estado;
-		this.nombreEstado = nombreEstado;
-		this.codigoAlpha2 = codigoAlpha2;
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
 	 * @param id
 	 * @param estado
 	 * @param nombreEstado
@@ -79,79 +57,11 @@ public class Estados {
 	}
 
 	/**
-	 * @return el atributo id
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id parametro id a actualizar
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return el atributo estado
-	 */
-	public String getEstado() {
-		return estado;
-	}
-
-	/**
-	 * @param estado parametro estado a actualizar
-	 */
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	/**
-	 * @return el atributo nombreEstado
-	 */
-	public String getNombreEstado() {
-		return nombreEstado;
-	}
-
-	/**
-	 * @param nombreEstado parametro nombreEstado a actualizar
-	 */
-	public void setNombreEstado(String nombreEstado) {
-		this.nombreEstado = nombreEstado;
-	}
-
-	/**
-	 * @return el atributo codigoAlpha2
-	 */
-	public String getCodigoAlpha2() {
-		return codigoAlpha2;
-	}
-
-	/**
-	 * @param codigoAlpha2 parametro codigoAlpha2 a actualizar
-	 */
-	public void setCodigoAlpha2(String codigoAlpha2) {
-		this.codigoAlpha2 = codigoAlpha2;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Estados [id=")
-			.append(id)
-			.append(", estado=")
-			.append(estado)
-			.append(", nombreEstado=")
-			.append(nombreEstado)
-			.append(", codigoAlpha2=")
-			.append(codigoAlpha2)
-			.append("]");
-		return builder.toString();
+	public Estados() {
+		super();
 	}
 
 }

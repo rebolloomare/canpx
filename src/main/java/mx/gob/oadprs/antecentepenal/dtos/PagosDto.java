@@ -6,6 +6,10 @@
  */
 package mx.gob.oadprs.antecentepenal.dtos;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.UUID;
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.model.Pagos;
 
 /**
@@ -14,40 +18,59 @@ import mx.gob.oadprs.antecentepenal.model.Pagos;
  * @version 1.0
  * @since
  */
+@Data
 public class PagosDto {
 
-	private int folio;
+	private UUID idPago;
+
+	private UUID idSolicitudConstancia;
+
+	private String lineaCaptura;
+
+	private String homoclave;
+
+	private BigDecimal costoTramite;
+
+	private String noConfirmacionPago;
+
+	private String referenciaPago;
+
+	private Date fechaPago;
+
+	private String digitosTarjetaPago;
+
+	private int tipoTarjeta;
+
+	private String bancoEmisorTarjeta;
 
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 * @param idPago
+	 * @param idSolicitudConstancia
+	 * @param lineaCaptura
+	 * @param homoclave
+	 * @param costoTramite
+	 * @param noConfirmacionPago
+	 * @param referenciaPago
+	 * @param fechaPago
+	 * @param digitosTarjetaPago
+	 * @param tipoTarjeta
+	 * @param bancoEmisorTarjeta
 	 */
-	public PagosDto() {
+	public PagosDto(Pagos pagos) {
 		super();
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param folio
-	 */
-	public PagosDto(Pagos pago) {
-		super();
-		this.folio = pago.getFolio();
-	}
-
-	/**
-	 * @return el atributo folio
-	 */
-	public int getFolio() {
-		return folio;
-	}
-
-	/**
-	 * @param folio parametro folio a actualizar
-	 */
-	public void setFolio(int folio) {
-		this.folio = folio;
+		this.idPago = pagos.getIdPago();
+		this.idSolicitudConstancia = pagos.getIdSolicitudConstancia();
+		this.lineaCaptura = pagos.getLineaCaptura();
+		this.homoclave = pagos.getHomoclave();
+		this.costoTramite = pagos.getCostoTramite();
+		this.noConfirmacionPago = pagos.getNoConfirmacionPago();
+		this.referenciaPago = pagos.getReferenciaPago();
+		this.fechaPago = pagos.getFechaPago();
+		this.digitosTarjetaPago = pagos.getDigitosTarjetaPago();
+		this.tipoTarjeta = pagos.getTipoTarjeta();
+		this.bancoEmisorTarjeta = pagos.getBancoEmisorTarjeta();
 	}
 
 }

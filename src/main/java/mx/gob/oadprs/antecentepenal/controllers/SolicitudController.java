@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +21,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import mx.gob.oadprs.antecentepenal.dtos.SolicitudDto;
 import mx.gob.oadprs.antecentepenal.model.Solicitud;
 import mx.gob.oadprs.antecentepenal.services.SolicitudService;
@@ -34,6 +41,7 @@ import mx.gob.oadprs.antecentepenal.services.SolicitudService;
  */
 @RestController
 @RequestMapping("/solicitud")
+@Tag(name = "Solicitudes", description = "API de Solicitudes")
 public class SolicitudController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SolicitudController.class);
@@ -42,8 +50,20 @@ public class SolicitudController {
 	private SolicitudService solicitudService;
 
 	@PostMapping("/registra")
+	@Operation(summary = "Registro de Solicitud",
+		description = "Registro de Solicitud de Antecedentes Penales",
+		tags = { "SolicitudDto" })
+	@ApiResponses(
+		value = {
+			@ApiResponse(responseCode = "201", description = "Solicitud creada",
+				content = @Content(mediaType = "application/json",
+					array = @ArraySchema(
+						schema = @Schema(implementation = SolicitudDto.class)))),
+			@ApiResponse(description = "Error en el Servidor", responseCode = "500",
+				content = @Content) })
 	public ResponseEntity<SolicitudDto> registraSolicitud(
-		@RequestBody SolicitudDto solicitudDto) {
+		@Parameter(description = "La petición no puede estar vacia",
+			required = true) @RequestBody SolicitudDto solicitudDto) {
 		logger.info("SolicitudController:::::registraSolicitud");
 		Solicitud solicitud = solicitudService.registraSolicitud(solicitudDto);
 		logger.info("Solicitud Registrada con éxito");
@@ -52,7 +72,22 @@ public class SolicitudController {
 	}
 
 	@GetMapping("/consulta/{folio}")
-	public ResponseEntity<SolicitudDto> obtieneSolicitudByFolio(@PathVariable String folio) {
+	@Operation(summary = "Consulta de Solicitud",
+		description = "Consulta de Solicitud de Antecedentes Penales",
+		tags = { "SolicitudDto" })
+	@ApiResponses(
+		value = {
+			@ApiResponse(responseCode = "200", description = "Operación exitosa",
+				content = @Content(mediaType = "application/json",
+					array = @ArraySchema(
+						schema = @Schema(implementation = SolicitudDto.class)))),
+			@ApiResponse(responseCode = "404", description = "No se encontraron registros",
+				content = @Content),
+			@ApiResponse(description = "Error en el Servidor", responseCode = "500",
+				content = @Content) })
+	public ResponseEntity<SolicitudDto> obtieneSolicitudByFolio(
+		@Parameter(description = "El parámetro no puede estar vacio",
+			required = true) @PathVariable String folio) {
 		logger.info("SolicitudController:::::::obtieneSolicitudById");
 		Solicitud solicitud = solicitudService.obtieneSolicitudById(folio);
 
@@ -63,6 +98,19 @@ public class SolicitudController {
 	}
 
 	@GetMapping("/consulta")
+	@Operation(summary = "Consulta lista de Solicitudes",
+		description = "Consulta lista de Solicitudes de Antecedentes Penales",
+		tags = { "SolicitudDto" })
+	@ApiResponses(
+		value = {
+			@ApiResponse(responseCode = "200", description = "Operación exitosa",
+				content = @Content(mediaType = "application/json",
+					array = @ArraySchema(
+						schema = @Schema(implementation = SolicitudDto.class)))),
+			@ApiResponse(responseCode = "404", description = "No se encontraron registros",
+				content = @Content),
+			@ApiResponse(description = "Error en el Servidor", responseCode = "500",
+				content = @Content) })
 	public ResponseEntity<List<SolicitudDto>> obtieneSolicitudes() {
 		logger.info("SolicitudController:::::::obtieneSolicitudes");
 		List<SolicitudDto> listaSolicitudesDto = new ArrayList<>();
@@ -73,17 +121,23 @@ public class SolicitudController {
 		return new ResponseEntity<List<SolicitudDto>>(listaSolicitudesDto, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/elimina/{folio}")
-	public ResponseEntity<String> eliminaSolicitud(@PathVariable String folio) {
-		logger.info("SolicitudController:::::::eliminarSolicitudById");
-		folio = solicitudService.eliminarSolicitudById(folio);
-		logger.info("Folio eliminado: " + folio);
-		return new ResponseEntity<String>(folio, HttpStatus.ACCEPTED);
-	}
-
 	@PutMapping("/actualiza")
+	@Operation(summary = "Actualiza la Solicitud",
+		description = "Actualiza la Solicitud de Antecedentes Penales",
+		tags = { "SolicitudDto" })
+	@ApiResponses(
+		value = {
+			@ApiResponse(responseCode = "201", description = "Solicitud actualizada",
+				content = @Content(mediaType = "application/json",
+					array = @ArraySchema(
+						schema = @Schema(implementation = SolicitudDto.class)))),
+			@ApiResponse(responseCode = "404", description = "No se encontraron registros",
+				content = @Content),
+			@ApiResponse(description = "Error en el Servidor", responseCode = "500",
+				content = @Content) })
 	public ResponseEntity<SolicitudDto> actualizaSolicitud(
-		@RequestBody SolicitudDto solicitudDto) {
+		@Parameter(description = "La petición no puede estar vacia",
+			required = true) @RequestBody SolicitudDto solicitudDto) {
 		logger.info("SolicitudController:::::::actualizaSolicitud");
 		Solicitud solicitud = new Solicitud(solicitudDto);
 		solicitudDto = new SolicitudDto(solicitudService.actualizaSolicitud(solicitud));

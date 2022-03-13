@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.dtos.ParametrosDocDto;
 
 /**
@@ -18,6 +19,7 @@ import mx.gob.oadprs.antecentepenal.dtos.ParametrosDocDto;
  * @version 1.0
  * @since
  */
+@Data
 @Entity
 @Table(schema = "cat", name = "cat_parametros_doc")
 public class ParametrosDoc {
@@ -32,26 +34,6 @@ public class ParametrosDoc {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
-	 */
-	public ParametrosDoc() {
-		super();
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param parametrosDoc
-	 * @param idTipoResolucion
-	 */
-	public ParametrosDoc(int parametrosDoc, int idTipoResolucion) {
-		super();
-		this.parametrosDoc = parametrosDoc;
-		this.idTipoResolucion = idTipoResolucion;
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
 	 * @param parametrosDoc
 	 * @param idTipoResolucion
 	 */
@@ -59,50 +41,6 @@ public class ParametrosDoc {
 		super();
 		this.parametrosDoc = parametrosDocDto.getParametrosDoc();
 		this.idTipoResolucion = parametrosDocDto.getIdTipoResolucion();
-	}
-
-	/**
-	 * @return el atributo parametrosDoc
-	 */
-	public int getParametrosDoc() {
-		return parametrosDoc;
-	}
-
-	/**
-	 * @param parametrosDoc parametro parametrosDoc a actualizar
-	 */
-	public void setParametrosDoc(int parametrosDoc) {
-		this.parametrosDoc = parametrosDoc;
-	}
-
-	/**
-	 * @return el atributo idTipoResolucion
-	 */
-	public int getIdTipoResolucion() {
-		return idTipoResolucion;
-	}
-
-	/**
-	 * @param idTipoResolucion parametro idTipoResolucion a actualizar
-	 */
-	public void setIdTipoResolucion(int idTipoResolucion) {
-		this.idTipoResolucion = idTipoResolucion;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ParametrosDoc [parametrosDoc=")
-			.append(parametrosDoc)
-			.append(", idTipoResolucion=")
-			.append(idTipoResolucion)
-			.append("]");
-		return builder.toString();
 	}
 
 }

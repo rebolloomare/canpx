@@ -6,10 +6,14 @@
  */
 package mx.gob.oadprs.antecentepenal.model;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.UUID;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.dtos.PagosDto;
 
 /**
@@ -18,63 +22,73 @@ import mx.gob.oadprs.antecentepenal.dtos.PagosDto;
  * @version 1.0
  * @since
  */
+@Data
 @Entity
+@Table(schema = "tx", name = "tx_pagos")
 public class Pagos {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int folio;
+	@Column(name = "idpago")
+	private UUID idPago;
+
+	@Column(name = "idsolicitud_constancia")
+	private UUID idSolicitudConstancia;
+
+	@Column(name = "linea_captura", length = 30)
+	private String lineaCaptura;
+
+	@Column(length = 10)
+	private String homoclave;
+
+	@Column(name = "costo_tramite", precision = 6, scale = 2)
+	private BigDecimal costoTramite;
+
+	@Column(name = "nro_confirmacion_pago", length = 30)
+	private String noConfirmacionPago;
+
+	@Column(name = "referencia_pago", length = 30)
+	private String referenciaPago;
+
+	@Column(name = "fecha_pago")
+	private Date fechaPago;
+
+	@Column(name = "digitos_tarjeta_pago", length = 18)
+	private String digitosTarjetaPago;
+
+	@Column(name = "tipo_tarjeta")
+	private int tipoTarjeta;
+
+	@Column(name = "banco_emisor_tarjeta", length = 40)
+	private String bancoEmisorTarjeta;
 
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 * @param idPago
+	 * @param idSolicitudConstancia
+	 * @param lineaCaptura
+	 * @param homoclave
+	 * @param costoTramite
+	 * @param noConfirmacionPago
+	 * @param referenciaPago
+	 * @param fechaPago
+	 * @param digitosTarjetaPago
+	 * @param tipoTarjeta
+	 * @param bancoEmisorTarjeta
 	 */
-	public Pagos() {
+	public Pagos(PagosDto pagosDto) {
 		super();
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 */
-	public Pagos(PagosDto pagoDto) {
-		this.folio = pagoDto.getFolio();
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param folio
-	 */
-	public Pagos(int folio) {
-		super();
-		this.folio = folio;
-	}
-
-	/**
-	 * @return el atributo folio
-	 */
-	public int getFolio() {
-		return folio;
-	}
-
-	/**
-	 * @param folio parametro folio a actualizar
-	 */
-	public void setFolio(int folio) {
-		this.folio = folio;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Pagos [folio=").append(folio).append("]");
-		return builder.toString();
+		this.idPago = pagosDto.getIdPago();
+		this.idSolicitudConstancia = pagosDto.getIdSolicitudConstancia();
+		this.lineaCaptura = pagosDto.getLineaCaptura();
+		this.homoclave = pagosDto.getHomoclave();
+		this.costoTramite = pagosDto.getCostoTramite();
+		this.noConfirmacionPago = pagosDto.getNoConfirmacionPago();
+		this.referenciaPago = pagosDto.getReferenciaPago();
+		this.fechaPago = pagosDto.getFechaPago();
+		this.digitosTarjetaPago = pagosDto.getDigitosTarjetaPago();
+		this.tipoTarjeta = pagosDto.getTipoTarjeta();
+		this.bancoEmisorTarjeta = pagosDto.getBancoEmisorTarjeta();
 	}
 
 }
