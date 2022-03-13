@@ -69,8 +69,6 @@ public class CatalogosController {
 				content = @Content(mediaType = "application/json",
 					array = @ArraySchema(
 						schema = @Schema(implementation = EstadosDto.class)))),
-			@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-				content = @Content),
 			@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 				content = @Content) })
 	public ResponseEntity<List<EstadosDto>> obtieneListaEstados() {
@@ -108,8 +106,6 @@ public class CatalogosController {
 			content = @Content(mediaType = "application/json",
 				array = @ArraySchema(
 					schema = @Schema(implementation = EstatusResolucionDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
 		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 			content = @Content) })
 	public ResponseEntity<List<EstatusResolucionDto>> obtieneListaEstatusResolucion() {
@@ -154,8 +150,6 @@ public class CatalogosController {
 			content = @Content(mediaType = "application/json",
 				array = @ArraySchema(
 					schema = @Schema(implementation = EstatusSolicitudDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
 		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 			content = @Content) })
 	public ResponseEntity<List<EstatusSolicitudDto>> obtieneListaEstatusSolicitud() {
@@ -164,6 +158,7 @@ public class CatalogosController {
 			catalogosService.obtieneListaEstatusSolicitud();
 		logger.info("Obtiene la lista de estatus de la solicitud con : "
 			+ listaEstatusSolicitud.size());
+
 		List<EstatusSolicitudDto> listaEstatusSolicitudDto = listaEstatusSolicitud.stream()
 			.map(EstatusSolicitudDto::new)
 			.collect(Collectors.toList());
@@ -197,8 +192,6 @@ public class CatalogosController {
 			content = @Content(mediaType = "application/json",
 				array = @ArraySchema(
 					schema = @Schema(implementation = IncidenciasDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
 		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 			content = @Content) })
 	public ResponseEntity<List<IncidenciasDto>> obtieneListaIncidencias() {
@@ -237,8 +230,6 @@ public class CatalogosController {
 			@ApiResponse(responseCode = "200", description = "Operación exitosa",
 				content = @Content(mediaType = "application/json", array = @ArraySchema(
 					schema = @Schema(implementation = InstitucionesCertificadasDto.class)))),
-			@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-				content = @Content),
 			@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 				content = @Content) })
 	public ResponseEntity<List<InstitucionesCertificadasDto>> obtieneListaInstitucionesCertificadas() {
@@ -286,8 +277,6 @@ public class CatalogosController {
 			content = @Content(mediaType = "application/json",
 				array = @ArraySchema(
 					schema = @Schema(implementation = ParametrosDocDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
 		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 			content = @Content) })
 	public ResponseEntity<List<ParametrosDocDto>> obtieneListaParametrosDoc() {
@@ -328,8 +317,6 @@ public class CatalogosController {
 			content = @Content(mediaType = "application/json",
 				array = @ArraySchema(
 					schema = @Schema(implementation = RazonSolicitudDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
 		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 			content = @Content) })
 	public ResponseEntity<List<RazonSolicitudDto>> obtieneListaRazonSolicitud() {
@@ -371,8 +358,6 @@ public class CatalogosController {
 			content = @Content(mediaType = "application/json",
 				array = @ArraySchema(
 					schema = @Schema(implementation = TipoResolucionDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
 		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 			content = @Content) })
 	public ResponseEntity<List<TipoResolucionDto>> obtieneListaTipoResolucion() {

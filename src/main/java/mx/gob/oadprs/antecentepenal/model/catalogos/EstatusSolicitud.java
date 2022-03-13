@@ -34,6 +34,14 @@ public class EstatusSolicitud {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 */
+	public EstatusSolicitud() {
+		super();
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 * @param idEstatusSolicitud
 	 * @param estatusSolicitud
 	 */

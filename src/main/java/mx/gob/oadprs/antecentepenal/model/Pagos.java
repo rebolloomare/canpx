@@ -64,6 +64,14 @@ public class Pagos {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 */
+	public Pagos() {
+		super();
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 * @param idPago
 	 * @param idSolicitudConstancia
 	 * @param lineaCaptura

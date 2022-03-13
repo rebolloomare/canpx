@@ -34,6 +34,14 @@ public class EstatusResolucion {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 */
+	public EstatusResolucion() {
+		super();
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 * @param idEstatusResolucion
 	 * @param estatusResolucion
 	 */

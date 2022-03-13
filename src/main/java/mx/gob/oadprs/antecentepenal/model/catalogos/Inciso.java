@@ -8,6 +8,7 @@ package mx.gob.oadprs.antecentepenal.model.catalogos;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
@@ -24,6 +25,7 @@ import mx.gob.oadprs.antecentepenal.dtos.IncisoDto;
 @Table(schema = "cat", name = "cat_inciso")
 public class Inciso {
 
+	@Id
 	@Column(name = "id_inciso")
 	@NotNull
 	private int idInciso;

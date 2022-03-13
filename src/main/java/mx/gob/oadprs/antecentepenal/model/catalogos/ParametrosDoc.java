@@ -34,6 +34,14 @@ public class ParametrosDoc {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 */
+	public ParametrosDoc() {
+		super();
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 * @param parametrosDoc
 	 * @param idTipoResolucion
 	 */

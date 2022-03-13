@@ -6,6 +6,7 @@
  */
 package mx.gob.oadprs.antecentepenal.dtos;
 
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.model.catalogos.Incidencias;
 
 /**
@@ -14,6 +15,7 @@ import mx.gob.oadprs.antecentepenal.model.catalogos.Incidencias;
  * @version 1.0
  * @since
  */
+@Data
 public class IncidenciasDto {
 
 	private int idIncidencia;
@@ -28,65 +30,9 @@ public class IncidenciasDto {
 		super();
 	}
 
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param idIncidencia
-	 * @param idincidencia2
-	 */
-	public IncidenciasDto(int idIncidencia, String incidencia) {
-		super();
-		this.idIncidencia = idIncidencia;
-		this.incidencia = incidencia;
-	}
-
 	public IncidenciasDto(Incidencias incidencias) {
 		this.idIncidencia = incidencias.getIdIncidencia();
 		this.incidencia = incidencias.getIncidencia();
-	}
-
-	/**
-	 * @return el atributo idIncidencia
-	 */
-	public int getIdIncidencia() {
-		return idIncidencia;
-	}
-
-	/**
-	 * @param idIncidencia parametro idIncidencia a actualizar
-	 */
-	public void setIdIncidencia(int idIncidencia) {
-		this.idIncidencia = idIncidencia;
-	}
-
-	/**
-	 * @return el atributo idincidencia
-	 */
-	public String getIncidencia() {
-		return incidencia;
-	}
-
-	/**
-	 * @param idincidencia parametro idincidencia a actualizar
-	 */
-	public void setIncidencia(String incidencia) {
-		this.incidencia = incidencia;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("IncidenciasDto [idIncidencia=")
-			.append(idIncidencia)
-			.append(", incidencia=")
-			.append(incidencia)
-			.append("]");
-		return builder.toString();
 	}
 
 }

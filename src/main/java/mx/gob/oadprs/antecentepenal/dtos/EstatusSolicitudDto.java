@@ -6,6 +6,7 @@
  */
 package mx.gob.oadprs.antecentepenal.dtos;
 
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusSolicitud;
 
 /**
@@ -14,6 +15,7 @@ import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusSolicitud;
  * @version 1.0
  * @since
  */
+@Data
 public class EstatusSolicitudDto {
 
 	private int idEstatusSolicitud;
@@ -31,67 +33,11 @@ public class EstatusSolicitudDto {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
-	 * @param idEstatusSolicitud
-	 * @param estatusSolicitud
-	 */
-	public EstatusSolicitudDto(int idEstatusSolicitud, String estatusSolicitud) {
-		super();
-		this.idEstatusSolicitud = idEstatusSolicitud;
-		this.estatusSolicitud = estatusSolicitud;
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
 	 */
 	public EstatusSolicitudDto(EstatusSolicitud estatusSolicitud) {
 		super();
 		this.idEstatusSolicitud = estatusSolicitud.getIdEstatusSolicitud();
 		this.estatusSolicitud = estatusSolicitud.getEstatusSolicitud();
-	}
-
-	/**
-	 * @return el atributo idEstatusSolicitud
-	 */
-	public int getIdEstatusSolicitud() {
-		return idEstatusSolicitud;
-	}
-
-	/**
-	 * @param idEstatusSolicitud parametro idEstatusSolicitud a actualizar
-	 */
-	public void setIdEstatusSolicitud(int idEstatusSolicitud) {
-		this.idEstatusSolicitud = idEstatusSolicitud;
-	}
-
-	/**
-	 * @return el atributo estatusSolicitud
-	 */
-	public String getEstatusSolicitud() {
-		return estatusSolicitud;
-	}
-
-	/**
-	 * @param estatusSolicitud parametro estatusSolicitud a actualizar
-	 */
-	public void setEstatusSolicitud(String estatusSolicitud) {
-		this.estatusSolicitud = estatusSolicitud;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("EstatusSolicitudDto [idEstatusSolicitud=")
-			.append(idEstatusSolicitud)
-			.append(", estatusSolicitud=")
-			.append(estatusSolicitud)
-			.append("]");
-		return builder.toString();
 	}
 
 }

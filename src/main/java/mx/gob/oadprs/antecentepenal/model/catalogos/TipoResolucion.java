@@ -34,6 +34,14 @@ public class TipoResolucion {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 */
+	public TipoResolucion() {
+		super();
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 * @param idTipoResolucion
 	 * @param tipoResolucion
 	 */

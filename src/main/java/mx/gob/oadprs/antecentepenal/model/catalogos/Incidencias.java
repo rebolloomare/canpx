@@ -34,6 +34,14 @@ public class Incidencias {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 */
+	public Incidencias() {
+		super();
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 * @param idIncidencia
 	 * @param idincidencia2
 	 */

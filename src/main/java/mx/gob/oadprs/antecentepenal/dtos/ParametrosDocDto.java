@@ -6,6 +6,7 @@
  */
 package mx.gob.oadprs.antecentepenal.dtos;
 
+import lombok.Data;
 import mx.gob.oadprs.antecentepenal.model.catalogos.ParametrosDoc;
 
 /**
@@ -14,6 +15,7 @@ import mx.gob.oadprs.antecentepenal.model.catalogos.ParametrosDoc;
  * @version 1.0
  * @since
  */
+@Data
 public class ParametrosDocDto {
 
 	private int parametrosDoc;
@@ -32,66 +34,10 @@ public class ParametrosDocDto {
 	 * TODO [Agregar documentacion al método]
 	 * @author
 	 * @param parametrosDoc
-	 * @param idTipoResolucion
-	 */
-	public ParametrosDocDto(int parametrosDoc, int idTipoResolucion) {
-		super();
-		this.parametrosDoc = parametrosDoc;
-		this.idTipoResolucion = idTipoResolucion;
-	}
-
-	/**
-	 * TODO [Agregar documentacion al método]
-	 * @author
-	 * @param parametrosDoc
 	 */
 	public ParametrosDocDto(ParametrosDoc parametrosDoc) {
 		this.parametrosDoc = parametrosDoc.getParametrosDoc();
 		this.idTipoResolucion = parametrosDoc.getIdTipoResolucion();
-	}
-
-	/**
-	 * @return el atributo parametrosDoc
-	 */
-	public int getParametrosDoc() {
-		return parametrosDoc;
-	}
-
-	/**
-	 * @param parametrosDoc parametro parametrosDoc a actualizar
-	 */
-	public void setParametrosDoc(int parametrosDoc) {
-		this.parametrosDoc = parametrosDoc;
-	}
-
-	/**
-	 * @return el atributo idTipoResolucion
-	 */
-	public int getIdTipoResolucion() {
-		return idTipoResolucion;
-	}
-
-	/**
-	 * @param idTipoResolucion parametro idTipoResolucion a actualizar
-	 */
-	public void setIdTipoResolucion(int idTipoResolucion) {
-		this.idTipoResolucion = idTipoResolucion;
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ParametrosDocDto [parametrosDoc=")
-			.append(parametrosDoc)
-			.append(", idTipoResolucion=")
-			.append(idTipoResolucion)
-			.append("]");
-		return builder.toString();
 	}
 
 }

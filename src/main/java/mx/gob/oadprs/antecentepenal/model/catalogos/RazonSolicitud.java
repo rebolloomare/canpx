@@ -6,11 +6,11 @@
  */
 package mx.gob.oadprs.antecentepenal.model.catalogos;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 import mx.gob.oadprs.antecentepenal.dtos.RazonSolicitudDto;
 
@@ -29,34 +29,55 @@ public class RazonSolicitud {
 	@Column(name = "idrazon_solicitud")
 	private int idRazonSolicitud;
 
-	@Column(length = 160)
-	private String razon;
-
 	@Column(name = "idestatus")
 	private int idEstatus;
 
 	@Column(name = "idinstituciones_certificadas")
-	private UUID idInstitucionesCertificadas;
+	@NotNull
+	private int idInstitucionesCertificadas;
+
+	@Column(name = "id_inciso")
+	@NotNull
+	private int idInciso;
+
+	@Column(name = "motivo_razon", length = 200)
+	@NotNull
+	private String motivoRazon;
 
 	@Column(length = 1)
-	private char incizo;
+	private String incizo;
+
+	@Column(length = 160)
+	private String razon;
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 */
+	public RazonSolicitud() {
+		super();
+	}
 
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
 	 * @param idRazonSolicitud
-	 * @param razon
 	 * @param idEstatus
 	 * @param idInstitucionesCertificadas
+	 * @param idInciso
+	 * @param motivoRazon
 	 * @param incizo
+	 * @param razon
 	 */
 	public RazonSolicitud(RazonSolicitudDto razonSolicitudDto) {
 		super();
 		this.idRazonSolicitud = razonSolicitudDto.getIdRazonSolicitud();
-		this.razon = razonSolicitudDto.getRazon();
 		this.idEstatus = razonSolicitudDto.getIdEstatus();
 		this.idInstitucionesCertificadas = razonSolicitudDto.getIdInstitucionesCertificadas();
+		this.idInciso = razonSolicitudDto.getIdInciso();
+		this.motivoRazon = razonSolicitudDto.getMotivoRazon();
 		this.incizo = razonSolicitudDto.getIncizo();
+		this.razon = razonSolicitudDto.getRazon();
 	}
 
 }

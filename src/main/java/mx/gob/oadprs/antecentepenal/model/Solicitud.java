@@ -75,6 +75,14 @@ public class Solicitud {
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
+	 */
+	public Solicitud() {
+		super();
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
 	 * @param uuid
 	 * @param nombres
 	 * @param apellidoPaterno

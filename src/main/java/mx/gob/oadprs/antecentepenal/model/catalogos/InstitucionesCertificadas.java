@@ -6,11 +6,11 @@
  */
 package mx.gob.oadprs.antecentepenal.model.catalogos;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 import mx.gob.oadprs.antecentepenal.dtos.InstitucionesCertificadasDto;
 
@@ -27,16 +27,29 @@ public class InstitucionesCertificadas {
 
 	@Id
 	@Column(name = "idinstituciones_certificadas")
-	private UUID idInstitucionesCertificadas;
+	private int idInstitucionesCertificadas;
 
-	@Column(name = "instituciones_certificadas", length = 600)
+	@Column(name = "instituciones_certificadas", length = 100)
+	@NotNull
 	private String institucionesCertificadas;
 
-	@Column(name = "idestatus")
-	private int idEstatus;
+	@NotNull
+	private int estatus;
 
-	@Column(name = "nombre_corto", length = 60)
+	@Column(name = "nombre_corto", length = 50)
+	@NotNull
 	private String nombreCorto;
+
+	@Column(name = "idestatus")
+	private Integer idEstatus;
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 */
+	public InstitucionesCertificadas() {
+		super();
+	}
 
 	/**
 	 * TODO [Agregar documentacion al método]
