@@ -200,6 +200,39 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * La documentación de este método se encuentra en la clase o interface que lo declara
 	 * (non-Javadoc)
 	 * @see
+	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneListaRazonSolicitud()
+	 */
+	@Override
+	public List<RazonSolicitud> obtieneListaRazonSolicitud() {
+		return razonSolicitudRepository.findAll();
+	}
+
+	/*
+	 * La documentación de este método se encuentra en la clase o interface que lo declara
+	 * (non-Javadoc)
+	 * @see mx.gob.oadprs.antecentepenal.services.CatalogosService#
+	 * obtieneListaRazonSolicitudPorId(int)
+	 */
+	@Override
+	public List<RazonSolicitud> obtieneListaRazonSolicitudPorId(int id) {
+		return razonSolicitudRepository.findByIdInstitucionesCertificadas(id);
+	}
+
+	/*
+	 * La documentación de este método se encuentra en la clase o interface que lo declara
+	 * (non-Javadoc)
+	 * @see
+	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneRazonSolicitud(int)
+	 */
+	@Override
+	public RazonSolicitud obtieneRazonSolicitud(int id) {
+		return razonSolicitudRepository.getById(id);
+	}
+
+	/*
+	 * La documentación de este método se encuentra en la clase o interface que lo declara
+	 * (non-Javadoc)
+	 * @see
 	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneListaParametrosDoc()
 	 */
 	@Override
@@ -215,28 +248,6 @@ public class CatalogosServiceImpl implements CatalogosService {
 	@Override
 	public ParametrosDoc obtieneParametroDoc(int id) {
 		return parametrosDocRepository.getById(id);
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see
-	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneListaRazonSolicitud()
-	 */
-	@Override
-	public List<RazonSolicitud> obtieneListaRazonSolicitud() {
-		return razonSolicitudRepository.findAll();
-	}
-
-	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
-	 * (non-Javadoc)
-	 * @see
-	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneRazonSolicitud(int)
-	 */
-	@Override
-	public RazonSolicitud obtieneRazonSolicitud(int id) {
-		return razonSolicitudRepository.getById(id);
 	}
 
 	/*

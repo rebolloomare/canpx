@@ -6,16 +6,11 @@
  */
 package mx.gob.oadprs.antecentepenal.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,51 +61,6 @@ public class PagoController {
 		logger.info("Pago Registrado exitosamente");
 		pagoDto = new PagosDto(pago);
 		return new ResponseEntity<PagosDto>(pagoDto, HttpStatus.CREATED);
-	}
-
-	@GetMapping("/consulta/{folio}")
-	@Operation(summary = "Consulta de Pago",
-		description = "Consulta de Pago de Solicitud de Antecedentes Penales",
-		tags = { "PagosDto" })
-	@ApiResponses(value = {
-		@ApiResponse(responseCode = "200", description = "Operación exitosa",
-			content = @Content(mediaType = "application/json",
-				array = @ArraySchema(schema = @Schema(implementation = PagosDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
-		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
-			content = @Content) })
-	public ResponseEntity<PagosDto> obtienePagoByFolio(
-		@Parameter(description = "El parámetro no puede estar vacio",
-			required = true) @PathVariable String folio) {
-		logger.info("PagoController::::::::obtienePagoByFolio");
-		Pagos pago = pagoService.obtienePagoById(folio);
-
-		logger.info("Datos pago: " + pago.toString());
-		PagosDto pagoDto = new PagosDto(pago);
-
-		return new ResponseEntity<PagosDto>(pagoDto, HttpStatus.OK);
-	}
-
-	@GetMapping("/consulta")
-	@Operation(summary = "Consulta de Pagos",
-		description = "Consulta de Pagos de Solicitud de Antecedentes Penales",
-		tags = { "PagosDto" })
-	@ApiResponses(value = {
-		@ApiResponse(responseCode = "200", description = "Operación exitosa",
-			content = @Content(mediaType = "application/json",
-				array = @ArraySchema(schema = @Schema(implementation = PagosDto.class)))),
-		@ApiResponse(responseCode = "404", description = "No se encontraron registros",
-			content = @Content),
-		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
-			content = @Content) })
-	public ResponseEntity<List<PagosDto>> obtienePagos() {
-		logger.info("PagoController:::::::::obtienePagos");
-		List<PagosDto> listaPagosDto = new ArrayList<>();
-		List<Pagos> listaPagos = pagoService.obtienePagos();
-		logger.info("Elementos en la lista de solicitudes: " + listaPagos.size());
-		listaPagosDto = listaPagos.stream().map(PagosDto::new).collect(Collectors.toList());
-		return new ResponseEntity<List<PagosDto>>(listaPagosDto, HttpStatus.OK);
 	}
 
 }

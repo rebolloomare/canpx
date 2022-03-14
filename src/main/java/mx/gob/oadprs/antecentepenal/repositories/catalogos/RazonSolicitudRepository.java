@@ -6,6 +6,7 @@
  */
 package mx.gob.oadprs.antecentepenal.repositories.catalogos;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import mx.gob.oadprs.antecentepenal.model.catalogos.RazonSolicitud;
@@ -18,5 +19,13 @@ import mx.gob.oadprs.antecentepenal.model.catalogos.RazonSolicitud;
  */
 @Repository
 public interface RazonSolicitudRepository extends JpaRepository<RazonSolicitud, Integer> {
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	List<RazonSolicitud> findByIdInstitucionesCertificadas(int idInstitucionesCertificadas);
 
 }

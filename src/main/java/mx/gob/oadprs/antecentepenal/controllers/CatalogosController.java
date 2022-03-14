@@ -309,7 +309,7 @@ public class CatalogosController {
 		return new ResponseEntity<ParametrosDocDto>(parametroDocDto, HttpStatus.OK);
 	}
 
-	@GetMapping("/razon")
+	@GetMapping("/motivos")
 	@Operation(summary = "Obtiene la lista de razones",
 		description = "Obtiene la lista completa de razones", tags = { "RazonSolicitudDto" })
 	@ApiResponses(value = {
@@ -331,7 +331,31 @@ public class CatalogosController {
 			HttpStatus.OK);
 	}
 
-	@GetMapping("/razon/{id}")
+	@GetMapping("/motivos/{id}")
+	@Operation(summary = "Obtiene la lista de razones por Id",
+		description = "Obtiene la lista de razones por Id", tags = { "RazonSolicitudDto" })
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Operación exitosa",
+			content = @Content(mediaType = "application/json",
+				array = @ArraySchema(
+					schema = @Schema(implementation = RazonSolicitudDto.class)))),
+		@ApiResponse(responseCode = "404", description = "No se encontraron registros"),
+		@ApiResponse(description = "Error en el Servidor", responseCode = "500",
+			content = @Content) })
+	public ResponseEntity<List<RazonSolicitudDto>> obtieneListaRazonSolicitudPorId(@Parameter(
+		description = "Id no puede estar vacio.", required = true) @PathVariable int id) {
+		logger.info("CatalogosController::::::::::obtieneListaRazonSolicitudPorId");
+		List<RazonSolicitud> listaRazonSolicitud =
+			catalogosService.obtieneListaRazonSolicitudPorId(id);
+		logger.info("Obtiene la lista de razones con : " + listaRazonSolicitud.size());
+		List<RazonSolicitudDto> listaRazonSolicitudDto = listaRazonSolicitud.stream()
+			.map(RazonSolicitudDto::new)
+			.collect(Collectors.toList());
+		return new ResponseEntity<List<RazonSolicitudDto>>(listaRazonSolicitudDto,
+			HttpStatus.OK);
+	}
+
+	@GetMapping("/motivo/{id}")
 	@Operation(summary = "Encontrar parametro por Id",
 		description = "Obtiene Razón de la Solicitud por Id", tags = { "RazonSolicitudDto" })
 	@ApiResponses(value = {

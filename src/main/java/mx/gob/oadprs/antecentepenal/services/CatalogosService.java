@@ -160,4 +160,12 @@ public interface CatalogosService {
 	 */
 	TipoResolucion obtieneTipoResolucion(int id);
 
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param id
+	 * @return
+	 */
+	List<RazonSolicitud> obtieneListaRazonSolicitudPorId(int id);
+
 }
