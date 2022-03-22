@@ -26,8 +26,6 @@ public class InstitucionesCertificadasDto {
 
 	private String nombreCorto;
 
-	private Integer idEstatus;
-
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
@@ -41,7 +39,6 @@ public class InstitucionesCertificadasDto {
 			institucionesCertificadas.getIdInstitucionesCertificadas();
 		this.institucionesCertificadas =
 			institucionesCertificadas.getInstitucionesCertificadas();
-		this.idEstatus = institucionesCertificadas.getIdEstatus();
 		this.estatus = institucionesCertificadas.getEstatus();
 		this.nombreCorto = institucionesCertificadas.getNombreCorto();
 	}

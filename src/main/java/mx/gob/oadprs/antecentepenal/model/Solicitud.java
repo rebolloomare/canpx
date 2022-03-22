@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import lombok.Data;
 import mx.gob.oadprs.antecentepenal.dtos.SolicitudDto;
 
@@ -70,6 +71,7 @@ public class Solicitud {
 	private String folioSeguimiento;
 
 	@Column(name = "correo_electronico", length = 120)
+	@Email
 	private String correoElectronico;
 
 	/**

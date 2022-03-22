@@ -42,7 +42,7 @@ public class SolicitudServiceImpl implements SolicitudService {
 	public Solicitud registraSolicitud(SolicitudDto solicitudDto) {
 		logger.info("SolicitudServiceImpl::::::::::::::::::registraSolicitud");
 		Solicitud solicitud = new Solicitud(solicitudDto);
-		logger.info("valores: " + solicitud.toString());
+		logger.info("valores: {}", solicitud.toString());
 		return solicitudRepository.save(solicitud);
 	}
 
@@ -55,7 +55,7 @@ public class SolicitudServiceImpl implements SolicitudService {
 	@Override
 	public Solicitud obtieneSolicitudById(String folio) {
 		logger.info("SolicitudServiceImpl::::::::::::::::::obtieneSolicitudById");
-		logger.info("folio: " + folio);
+		logger.info("folio: {}", folio);
 		return solicitudRepository.findById(Integer.parseInt(folio)).orElse(null);
 	}
 
@@ -69,7 +69,7 @@ public class SolicitudServiceImpl implements SolicitudService {
 		logger.info("SolicitudServiceImpl::::::::::::::::::obtieneSolicitudById");
 		List<Solicitud> listaSolicitudes = new ArrayList<>();
 		solicitudRepository.findAll().forEach(listaSolicitudes::add);
-		logger.info("tamanio de la lista de solicitudes: " + listaSolicitudes.size());
+		logger.info("tamanio de la lista de solicitudes: {}", listaSolicitudes.size());
 		return listaSolicitudes;
 	}
 
@@ -81,7 +81,7 @@ public class SolicitudServiceImpl implements SolicitudService {
 	 */
 	@Override
 	public String eliminarSolicitudById(String folio) {
-		logger.info("folio a eliminar: " + folio);
+		logger.info("folio a eliminar: {}", folio);
 		solicitudRepository.deleteById(Integer.parseInt(folio));
 		return folio;
 	}

@@ -6,6 +6,7 @@
  */
 package mx.gob.oadprs.antecentepenal.controllers;
 
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class SolicitudController {
 				content = @Content) })
 	public ResponseEntity<SolicitudDto> registraSolicitud(
 		@Parameter(description = "La petición no puede estar vacia",
-			required = true) @RequestBody SolicitudDto solicitudDto) {
+			required = true) @Valid @RequestBody SolicitudDto solicitudDto) {
 		logger.info("SolicitudController:::::registraSolicitud");
 		Solicitud solicitud = solicitudService.registraSolicitud(solicitudDto);
 		logger.info("Solicitud Registrada con éxito");

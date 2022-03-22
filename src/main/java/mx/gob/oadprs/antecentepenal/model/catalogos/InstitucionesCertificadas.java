@@ -40,9 +40,6 @@ public class InstitucionesCertificadas {
 	@NotNull
 	private String nombreCorto;
 
-	@Column(name = "idestatus")
-	private Integer idEstatus;
-
 	/**
 	 * TODO [Agregar documentacion al método]
 	 * @author
@@ -66,7 +63,6 @@ public class InstitucionesCertificadas {
 			institucionesCertificadasDto.getIdInstitucionesCertificadas();
 		this.institucionesCertificadas =
 			institucionesCertificadasDto.getInstitucionesCertificadas();
-		this.idEstatus = institucionesCertificadasDto.getIdEstatus();
 		this.nombreCorto = institucionesCertificadasDto.getNombreCorto();
 	}
 

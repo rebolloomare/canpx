@@ -72,9 +72,9 @@ public class CatalogosController {
 			@ApiResponse(description = "Error en el Servidor", responseCode = "500",
 				content = @Content) })
 	public ResponseEntity<List<EstadosDto>> obtieneListaEstados() {
-		logger.info("CatalogosController:::::getEstados");
 		List<Estados> listaEstados = catalogosService.estadosList();
-		logger.info("Obtiene la lista de estados con: ", listaEstados.size());
+		listaEstados.stream()
+			.forEach(l -> logger.info("Obtiene la lista de estados: ", listaEstados));
 		List<EstadosDto> listaEstadosDto =
 			listaEstados.stream().map(EstadosDto::new).collect(Collectors.toList());
 		return new ResponseEntity<List<EstadosDto>>(listaEstadosDto, HttpStatus.OK);
@@ -90,9 +90,8 @@ public class CatalogosController {
 		@ApiResponse(responseCode = "404", description = "No se encontraron registros") })
 	public ResponseEntity<EstadosDto> obtieneEstado(@Parameter(
 		description = "Id no puede estar vacio.", required = true) @PathVariable int id) {
-		logger.info("CatalogosController::::::::::getEstado");
 		Estados estado = catalogosService.obtieneEstado(id);
-		logger.info("Obtiene el estado: " + estado.getNombreEstado() + " por id: " + id);
+		logger.info("Obtiene el estado {} y el id {}: ", estado.getNombreEstado(), id);
 		EstadosDto estadoDto = new EstadosDto(estado);
 		return new ResponseEntity<EstadosDto>(estadoDto, HttpStatus.OK);
 	}
@@ -112,8 +111,8 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneListaEstatusResolucion");
 		List<EstatusResolucion> listaEstatusResolucion =
 			catalogosService.obtieneListaEstatusResolucion();
-		logger.info("Obtiene la lista de estatus de resolucion de la solicitud con : "
-			+ listaEstatusResolucion.size());
+		logger.info("Obtiene la lista de estatus de resolucion de la solicitud con: {} ",
+			listaEstatusResolucion.size());
 		List<EstatusResolucionDto> listaEstatusResolucionDto = listaEstatusResolucion.stream()
 			.map(EstatusResolucionDto::new)
 			.collect(Collectors.toList());
@@ -134,8 +133,7 @@ public class CatalogosController {
 		description = "Id no puede estar vacio.", required = true) @PathVariable int id) {
 		logger.info("CatalogosController::::::::::obtieneEstatusResolucion");
 		EstatusResolucion estatusResolucion = catalogosService.obtieneEstatusResolucion(id);
-		logger.info("Obtiene el estatus de la solicitud: "
-			+ estatusResolucion.getIdEstatusResolucion() + " por id: " + id);
+		logger.info("Obtiene el estatus de la solicitud {} por id {} ", estatusResolucion.getIdEstatusResolucion(), id);
 		EstatusResolucionDto estatusResolucionDto =
 			new EstatusResolucionDto(estatusResolucion);
 		return new ResponseEntity<EstatusResolucionDto>(estatusResolucionDto, HttpStatus.OK);
@@ -156,8 +154,8 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneListaEstatusSolicitud");
 		List<EstatusSolicitud> listaEstatusSolicitud =
 			catalogosService.obtieneListaEstatusSolicitud();
-		logger.info("Obtiene la lista de estatus de la solicitud con : "
-			+ listaEstatusSolicitud.size());
+		logger.info("Obtiene la lista de estatus de la solicitud con : {} ",
+			listaEstatusSolicitud.size());
 
 		List<EstatusSolicitudDto> listaEstatusSolicitudDto = listaEstatusSolicitud.stream()
 			.map(EstatusSolicitudDto::new)
@@ -178,8 +176,8 @@ public class CatalogosController {
 		description = "Id no puede estar vacio.", required = true) @PathVariable int id) {
 		logger.info("CatalogosController::::::::::obtieneEstatusSolicitud");
 		EstatusSolicitud estatusSolicitud = catalogosService.obtieneEstatusSolicitud(id);
-		logger.info("Obtiene el estatus de la solicitud: "
-			+ estatusSolicitud.getIdEstatusSolicitud() + " por id: " + id);
+		logger.info("Obtiene el estatus de la solicitud {} por id {}", 
+			estatusSolicitud.getIdEstatusSolicitud(), id);
 		EstatusSolicitudDto estatusSolicitudDto = new EstatusSolicitudDto(estatusSolicitud);
 		return new ResponseEntity<EstatusSolicitudDto>(estatusSolicitudDto, HttpStatus.OK);
 	}
@@ -197,7 +195,7 @@ public class CatalogosController {
 	public ResponseEntity<List<IncidenciasDto>> obtieneListaIncidencias() {
 		logger.info("CatalogosController::::::::::obtieneListaIncidencias");
 		List<Incidencias> listaIncidencias = catalogosService.obtieneListaIncidencias();
-		logger.info("Obtiene la lista de Incidencias con : " + listaIncidencias.size());
+		logger.info("Obtiene la lista de Incidencias con : {} ", listaIncidencias.size());
 		List<IncidenciasDto> listaIncidenciasDto =
 			listaIncidencias.stream().map(IncidenciasDto::new).collect(Collectors.toList());
 		return new ResponseEntity<List<IncidenciasDto>>(listaIncidenciasDto, HttpStatus.OK);
@@ -216,7 +214,7 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneEstatusSolicitud");
 		Incidencias incidencias = catalogosService.obtieneIncidencia(id);
 		logger.info(
-			"Obtiene la Incidencia : " + incidencias.getIdIncidencia() + " por id: " + id);
+			"Obtiene la Incidencia por id: {} ", id);
 		IncidenciasDto incidenciasDto = new IncidenciasDto(incidencias);
 		return new ResponseEntity<IncidenciasDto>(incidenciasDto, HttpStatus.OK);
 	}
@@ -236,12 +234,12 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneListaInstitucionesCertificadas");
 		List<InstitucionesCertificadas> listaInstitucionesCertificadas =
 			catalogosService.obtieneListaInstitucionesCertificadas();
-		logger.info("Obtiene la lista de Instituciones Certificadas con : "
-			+ listaInstitucionesCertificadas.size());
+
 		List<InstitucionesCertificadasDto> listaInstitucionesCertificadasDto =
 			listaInstitucionesCertificadas.stream()
 				.map(InstitucionesCertificadasDto::new)
 				.collect(Collectors.toList());
+
 		return new ResponseEntity<List<InstitucionesCertificadasDto>>(
 			listaInstitucionesCertificadasDto, HttpStatus.OK);
 	}
@@ -261,8 +259,7 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneInstitucionCertificada");
 		InstitucionesCertificadas institucionCertificada =
 			catalogosService.obtieneInstitucionCertificada(id);
-		logger.info("Obtiene obtiene Institucion Certificada : "
-			+ institucionCertificada.getInstitucionesCertificadas() + " por id: " + id);
+		logger.info("Obtiene Institucion Certificada : {}", institucionCertificada.getInstitucionesCertificadas());
 		InstitucionesCertificadasDto institucionCertificadaDto =
 			new InstitucionesCertificadasDto(institucionCertificada);
 		return new ResponseEntity<InstitucionesCertificadasDto>(institucionCertificadaDto,
@@ -283,7 +280,7 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneListaParametrosDoc");
 		List<ParametrosDoc> listaParametrosDoc = catalogosService.obtieneListaParametrosDoc();
 		logger.info(
-			"Obtiene la lista de parametros de documentos con : " + listaParametrosDoc.size());
+			"Obtiene la lista de parametros de documentos con : {} ", listaParametrosDoc.size());
 		List<ParametrosDocDto> listaParametrosDocDto = listaParametrosDoc.stream()
 			.map(ParametrosDocDto::new)
 			.collect(Collectors.toList());
@@ -303,8 +300,7 @@ public class CatalogosController {
 		description = "Id no puede estar vacio.", required = true) @PathVariable int id) {
 		logger.info("CatalogosController::::::::::obtieneParametroDoc");
 		ParametrosDoc parametroDoc = catalogosService.obtieneParametroDoc(id);
-		logger.info("Obtiene obtiene Parametro del Doc : " + parametroDoc.getParametrosDoc()
-			+ " por id: " + id);
+		logger.info("Obtiene obtiene Parametro del Doc : {}", parametroDoc.getParametrosDoc());
 		ParametrosDocDto parametroDocDto = new ParametrosDocDto(parametroDoc);
 		return new ResponseEntity<ParametrosDocDto>(parametroDocDto, HttpStatus.OK);
 	}
@@ -323,7 +319,7 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneListaRazonSolicitud");
 		List<RazonSolicitud> listaRazonSolicitud =
 			catalogosService.obtieneListaRazonSolicitud();
-		logger.info("Obtiene la lista de razones con : " + listaRazonSolicitud.size());
+		logger.info("Obtiene la lista de razones con : {}", listaRazonSolicitud.size());
 		List<RazonSolicitudDto> listaRazonSolicitudDto = listaRazonSolicitud.stream()
 			.map(RazonSolicitudDto::new)
 			.collect(Collectors.toList());
@@ -347,7 +343,7 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::obtieneListaRazonSolicitudPorId");
 		List<RazonSolicitud> listaRazonSolicitud =
 			catalogosService.obtieneListaRazonSolicitudPorId(id);
-		logger.info("Obtiene la lista de razones con : " + listaRazonSolicitud.size());
+		logger.info("Obtiene la lista de razones con : {}", listaRazonSolicitud.size());
 		List<RazonSolicitudDto> listaRazonSolicitudDto = listaRazonSolicitud.stream()
 			.map(RazonSolicitudDto::new)
 			.collect(Collectors.toList());
@@ -367,8 +363,7 @@ public class CatalogosController {
 		description = "Id no puede estar vacio.", required = true) @PathVariable int id) {
 		logger.info("CatalogosController::::::::::obtieneRazonSolicitud");
 		RazonSolicitud razonSolicitud = catalogosService.obtieneRazonSolicitud(id);
-		logger.info("Obtiene obtiene razon de la solicitud : "
-			+ razonSolicitud.getIdRazonSolicitud() + " por id: " + id);
+		logger.info("Obtiene obtiene razon de la solicitud : {}", razonSolicitud.getIdRazonSolicitud());
 		RazonSolicitudDto razonSolicitudDto = new RazonSolicitudDto(razonSolicitud);
 		return new ResponseEntity<RazonSolicitudDto>(razonSolicitudDto, HttpStatus.OK);
 	}
@@ -388,7 +383,7 @@ public class CatalogosController {
 		logger.info("CatalogosController::::::::::listaTipoResolucion");
 		List<TipoResolucion> listaTipoResolucion =
 			catalogosService.obtieneListaTipoResolucion();
-		logger.info("Obtiene la lista de Tipo Resolucion con : " + listaTipoResolucion.size());
+		logger.info("Obtiene la lista de Tipo Resolucion con : {}", listaTipoResolucion.size());
 		List<TipoResolucionDto> listaTipoResolucionDto = listaTipoResolucion.stream()
 			.map(TipoResolucionDto::new)
 			.collect(Collectors.toList());
@@ -408,8 +403,7 @@ public class CatalogosController {
 		description = "Id no puede estar vacio.", required = true) @PathVariable int id) {
 		logger.info("CatalogosController::::::::::obtieneTipoResolucion");
 		TipoResolucion tipoResolucion = catalogosService.obtieneTipoResolucion(id);
-		logger.info("Obtiene obtiene Tipo Resolucion : " + tipoResolucion.getIdTipoResolucion()
-			+ " por id: " + id);
+		logger.info("Obtiene obtiene Tipo Resolucion : {}", tipoResolucion.getIdTipoResolucion());
 		TipoResolucionDto tipoResolucionDto = new TipoResolucionDto(tipoResolucion);
 		return new ResponseEntity<TipoResolucionDto>(tipoResolucionDto, HttpStatus.OK);
 	}

@@ -1,6 +1,6 @@
 /**
- * EmptyInputException.java Fecha de creación: 9 mar. 2022, 18:12:06 Copyright (c) 2022
- * XXXXXXX Todos los derechos reservados. Este software es información confidencial,
+ * ResourceNotFoundException.java Fecha de creación: 14 mar. 2022, 23:47:09 Copyright (c)
+ * 2022 XXXXXXX Todos los derechos reservados. Este software es información confidencial,
  * propiedad de XXXXXXX. Esta información confidencial no deberá ser divulgada y solo se
  * podrá utilizar de acuerdo a los términos que determine la propia empresa.
  */
@@ -19,8 +19,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class EmptyInputException extends RuntimeException {
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException {
 
 	/**
 	 * TODO [Agregar documentación del atributo]
@@ -35,7 +35,7 @@ public class EmptyInputException extends RuntimeException {
 	 * TODO [Agregar documentacion al método]
 	 * @author
 	 */
-	public EmptyInputException() {
+	public ResourceNotFoundException() {
 		super();
 	}
 
@@ -45,9 +45,18 @@ public class EmptyInputException extends RuntimeException {
 	 * @param codigo
 	 * @param mensaje
 	 */
-	public EmptyInputException(String codigo, String mensaje) {
+	public ResourceNotFoundException(String codigo, String mensaje) {
 		super();
 		this.codigo = codigo;
+		this.mensaje = mensaje;
+	}
+
+	/**
+	 * TODO [Agregar documentacion al método]
+	 * @author
+	 * @param string
+	 */
+	public ResourceNotFoundException(String mensaje) {
 		this.mensaje = mensaje;
 	}
 

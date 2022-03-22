@@ -9,6 +9,7 @@ package mx.gob.oadprs.antecentepenal.services.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import mx.gob.oadprs.antecentepenal.exceptions.ResourceNotFoundException;
 import mx.gob.oadprs.antecentepenal.model.catalogos.Estados;
 import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusResolucion;
 import mx.gob.oadprs.antecentepenal.model.catalogos.EstatusSolicitud;
@@ -81,8 +82,10 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * @see mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneEstado(int)
 	 */
 	@Override
-	public Estados obtieneEstado(int id) {
-		return estadoRepository.getById(id);
+	public Estados obtieneEstado(int id) throws ResourceNotFoundException {
+		return estadoRepository.findById(id)
+			.orElseThrow(
+				() -> new ResourceNotFoundException("Estado no encontrado con el id: " + id));
 	}
 
 	/*
@@ -104,8 +107,11 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneEstatusResolucion(int)
 	 */
 	@Override
-	public EstatusResolucion obtieneEstatusResolucion(int id) {
-		return estatusResolucionRepository.getById(id);
+	public EstatusResolucion obtieneEstatusResolucion(int id)
+		throws ResourceNotFoundException {
+		return estatusResolucionRepository.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException(
+				"Estatus Resolución no encontrado con el id: " + id));
 	}
 
 	/*
@@ -127,8 +133,10 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneEstatusSolicitud(int)
 	 */
 	@Override
-	public EstatusSolicitud obtieneEstatusSolicitud(int id) {
-		return estatusSolicitudRepository.getById(id);
+	public EstatusSolicitud obtieneEstatusSolicitud(int id) throws ResourceNotFoundException {
+		return estatusSolicitudRepository.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException(
+				"Estatus de la solicitud no encontrado con el id: " + id));
 	}
 
 	/*
@@ -148,8 +156,10 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * @see mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneIncidencia(int)
 	 */
 	@Override
-	public Incidencias obtieneIncidencia(int id) {
-		return incidenciasRepository.getById(id);
+	public Incidencias obtieneIncidencia(int id) throws ResourceNotFoundException {
+		return incidenciasRepository.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException(
+				"Incidencia no encontrada con el id: " + id));
 	}
 
 	/*
@@ -168,8 +178,10 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * @see mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneInciso(int)
 	 */
 	@Override
-	public Inciso obtieneInciso(int id) {
-		return incisoRepository.getById(id);
+	public Inciso obtieneInciso(int id) throws ResourceNotFoundException {
+		return incisoRepository.findById(id)
+			.orElseThrow(
+				() -> new ResourceNotFoundException("Inciso no encontrado con el id: " + id));
 	}
 
 	/*
@@ -191,8 +203,11 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * (int)
 	 */
 	@Override
-	public InstitucionesCertificadas obtieneInstitucionCertificada(int id) {
-		return institucionesCertificadasRepository.getById(null);
+	public InstitucionesCertificadas obtieneInstitucionCertificada(int id)
+		throws ResourceNotFoundException {
+		return institucionesCertificadasRepository.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException(
+				"institución Certificada no encontrada por el id: " + id));
 
 	}
 
@@ -225,8 +240,10 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneRazonSolicitud(int)
 	 */
 	@Override
-	public RazonSolicitud obtieneRazonSolicitud(int id) {
-		return razonSolicitudRepository.getById(id);
+	public RazonSolicitud obtieneRazonSolicitud(int id) throws ResourceNotFoundException {
+		return razonSolicitudRepository.findById(id)
+			.orElseThrow(
+				() -> new ResourceNotFoundException("Razon no encontrada por id: " + id));
 	}
 
 	/*
@@ -246,8 +263,10 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * @see mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneParametroDoc(int)
 	 */
 	@Override
-	public ParametrosDoc obtieneParametroDoc(int id) {
-		return parametrosDocRepository.getById(id);
+	public ParametrosDoc obtieneParametroDoc(int id) throws ResourceNotFoundException {
+		return parametrosDocRepository.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException(
+				"Parametro no encontrado por el id: " + id));
 	}
 
 	/*
@@ -268,8 +287,10 @@ public class CatalogosServiceImpl implements CatalogosService {
 	 * mx.gob.oadprs.antecentepenal.services.CatalogosService#obtieneTipoResolucion(int)
 	 */
 	@Override
-	public TipoResolucion obtieneTipoResolucion(int id) {
-		return tipoResolucionRepository.getById(id);
+	public TipoResolucion obtieneTipoResolucion(int id) throws ResourceNotFoundException {
+		return tipoResolucionRepository.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException(
+				"Tipo de Resolución no encontrado por el id: " + id));
 	}
 
 }

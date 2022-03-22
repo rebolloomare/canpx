@@ -42,6 +42,14 @@ public class PagosDto {
 	private int tipoTarjeta;
 
 	private String bancoEmisorTarjeta;
+	
+	/**
+	 *  TODO [Agregar documentacion al método]
+	 *  @author Omar Rebollo (omar.rebollo@gmail.com) 
+	 */
+	public PagosDto() {
+		super();
+	}
 
 	/**
 	 * TODO [Agregar documentacion al método]
@@ -72,5 +80,9 @@ public class PagosDto {
 		this.tipoTarjeta = pagos.getTipoTarjeta();
 		this.bancoEmisorTarjeta = pagos.getBancoEmisorTarjeta();
 	}
+
+
+
+	
 
 }

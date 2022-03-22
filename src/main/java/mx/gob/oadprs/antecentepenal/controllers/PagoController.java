@@ -6,6 +6,7 @@
  */
 package mx.gob.oadprs.antecentepenal.controllers;
 
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class PagoController {
 			content = @Content) })
 	public ResponseEntity<PagosDto> registraPago(
 		@Parameter(description = "La petición no puede estar vacia",
-			required = true) @RequestBody PagosDto pagoDto) {
+			required = true) @Valid @RequestBody PagosDto pagoDto) {
 		logger.info("PagoController::::::::registraPago");
 		Pagos pago = pagoService.registraPago(pagoDto);
 		logger.info("Pago Registrado exitosamente");
